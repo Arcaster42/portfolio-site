@@ -1,8 +1,10 @@
 <template>
   <div>
     <Navigation v-on:changeView='changeView' />
-    <Landing v-if="this.view==='landing'"/>
-    <Skills v-if="this.view==='skills'"/>
+    <transition name="fade" mode="out-in">
+      <Landing v-if="this.view==='landing'"/>
+      <Skills v-if="this.view==='skills'"/>
+    </transition>
   </div>
 </template>
 
@@ -43,5 +45,13 @@ export default {
 
 body {
   margin: 0px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.35s ease-out;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
 </style>
