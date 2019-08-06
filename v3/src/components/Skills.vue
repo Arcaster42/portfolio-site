@@ -11,7 +11,7 @@
                 <div v-if="skillView!=='none'">
                     <div v-for="(skill, i) in skills[skillView]" :key="skill">
                         <span class="skill-title">{{skill}}</span>
-                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-' + skill + '-' + i"></span></span>
+                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-' + skill"></span></span>
                     </div>
                 </div>  
             </div>
@@ -46,7 +46,7 @@ export default {
                     'Python'
                 ],
                 'databases': [
-                    'SQL / Postgres',
+                    'SQL/Postgres',
                     'MongoDB'
                 ],
                 'languages': [
@@ -56,7 +56,13 @@ export default {
                     'R',
                     'PHP'
                 ],
-                'frameworks/libraries': [],
+                'frameworks/libraries': [
+                    'Node/Express',
+                    'Vue/Vuex',
+                    'React/Redux',
+                    'Pug',
+                    'Mongoose'
+                ],
                 'management': []
             },
             buttons: {
@@ -123,11 +129,115 @@ export default {
     text-align: center;
 }
 
-#p-f-0 {
+#p-HTML {
     float: left;
     height: 10px;
     background-color: rgb(13, 4, 114);
-    width: 40%;
+    width: 85%;
+    border-radius: 25px;
+}
+
+#p-CSS {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 60%;
+    border-radius: 25px;
+}
+
+#p-JavaScript {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 85%;
+    border-radius: 25px;
+}
+
+#p-C\# {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 75%;
+    border-radius: 25px;
+}
+
+#p-Python {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 50%;
+    border-radius: 25px;
+}
+
+#p-SQL\/Postgres {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 70%;
+    border-radius: 25px;
+}
+
+#p-MongoDB {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 80%;
+    border-radius: 25px;
+}
+
+#p-R {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 65%;
+    border-radius: 25px;
+}
+
+#p-PHP {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 60%;
+    border-radius: 25px;
+}
+
+#p-Node\/Express {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 85%;
+    border-radius: 25px;
+}
+
+#p-Vue\/Vuex {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 85%;
+    border-radius: 25px;
+}
+
+#p-React\/Redux {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 70%;
+    border-radius: 25px;
+}
+
+#p-Pug {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 85%;
+    border-radius: 25px;
+}
+
+#p-Mongoose {
+    float: left;
+    height: 10px;
+    background-color: rgb(13, 4, 114);
+    width: 80%;
     border-radius: 25px;
 }
 
