@@ -4,47 +4,47 @@
         </div>
             <div class="skill-div">
                 <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('front-end')">Front-End</button>
-                <span v-if="this.skillView==='front-end'" class="skill-title">Skill Name</span>
-                <span id="skill-f-1" v-if="this.skillView==='front-end'" class="skill"><span id="p-f-1"></span></span>
-                <span v-if="this.skillView==='front-end'" class="skill-title">Skill Name</span>
-                <span id="skill-f-1" v-if="this.skillView==='front-end'" class="skill"><span id="p-f-2"></span></span>
-                <span v-if="this.skillView==='front-end'" class="skill-title">Skill Name</span>
-                <span id="skill-f-1" v-if="this.skillView==='front-end'" class="skill"><span id="p-f-3"></span></span>
                 <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('back-end')">Back-End</button>
-                <span v-if="this.skillView==='back-end'" class="skill-title">Skill Name</span>
-                <span id="skill-b-1" v-if="this.skillView==='back-end'" class="skill"><span id="p-b-1"></span></span>
-                <span v-if="this.skillView==='back-end'" class="skill-title">Skill Name</span>
-                <span id="skill-b-1" v-if="this.skillView==='back-end'" class="skill"><span id="p-b-2"></span></span>
-                <span v-if="this.skillView==='back-end'" class="skill-title">Skill Name</span>
-                <span id="skill-b-1" v-if="this.skillView==='back-end'" class="skill"><span id="p-b-3"></span></span>
                 <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('databases')">Databases</button>
-                <span v-if="this.skillView==='databases'" class="skill-title">Skill Name</span>
-                <span id="skill-d-1" v-if="this.skillView==='databases'" class="skill"><span id="p-d-1"></span></span>
-                <span v-if="this.skillView==='databases'" class="skill-title">Skill Name</span>
-                <span id="skill-d-1" v-if="this.skillView==='databases'" class="skill"><span id="p-d-2"></span></span>
-                <span v-if="this.skillView==='databases'" class="skill-title">Skill Name</span>
-                <span id="skill-d-1" v-if="this.skillView==='databases'" class="skill"><span id="p-d-3"></span></span>
                 <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('languages')">Languages</button>
-                <span v-if="this.skillView==='languages'" class="skill-title">Skill Name</span>
-                <span id="skill-l-1" v-if="this.skillView==='languages'" class="skill"><span id="p-l-1"></span></span>
-                <span v-if="this.skillView==='languages'" class="skill-title">Skill Name</span>
-                <span id="skill-l-1" v-if="this.skillView==='languages'" class="skill"><span id="p-l-2"></span></span>
-                <span v-if="this.skillView==='languages'" class="skill-title">Skill Name</span>
-                <span id="skill-l-1" v-if="this.skillView==='languages'" class="skill"><span id="p-l-3"></span></span>
                 <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('frameworks/libraries')">Frameworks / Libraries</button>
-                <span v-if="this.skillView==='frameworks/libraries'" class="skill-title">Skill Name</span>
-                <span id="skill-fl-1" v-if="this.skillView==='frameworks/libraries'" class="skill"><span id="p-fl-1"></span></span>
-                <span v-if="this.skillView==='frameworks/libraries'" class="skill-title">Skill Name</span>
-                <span id="skill-fl-1" v-if="this.skillView==='frameworks/libraries'" class="skill"><span id="p-fl-2"></span></span>
-                <span v-if="this.skillView==='frameworks/libraries'" class="skill-title">Skill Name</span>
-                <span id="skill-fl-1" v-if="this.skillView==='frameworks/libraries'" class="skill"><span id="p-fl-3"></span></span>
                 <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('management')">Management</button>
-                <span v-if="this.skillView==='management'" class="skill-title">Skill Name</span>
-                <span id="skill-m-1" v-if="this.skillView==='management'" class="skill"><span id="p-m-1"></span></span>
-                <span v-if="this.skillView==='management'" class="skill-title">Skill Name</span>
-                <span id="skill-m-1" v-if="this.skillView==='management'" class="skill"><span id="p-m-2"></span></span>
-                <span v-if="this.skillView==='management'" class="skill-title">Skill Name</span>
-                <span id="skill-m-1" v-if="this.skillView==='management'" class="skill"><span id="p-m-3"></span></span>
+                <div v-if="skillView==='front-end'">
+                    <div v-for="(skill, i) in skills['front-end']" :key="skill">
+                        <span class="skill-title">{{skill}}</span>
+                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-f-' + i"></span></span>
+                    </div>
+                </div>
+                <div v-if="skillView==='back-end'">
+                    <div v-for="(skill, i) in skills['back-end']" :key="skill">
+                        <span class="skill-title">{{skill}}</span>
+                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-b-' + i"></span></span>
+                    </div>
+                </div>
+                <div v-if="skillView==='databases'">
+                    <div v-for="(skill, i) in skills['databases']" :key="skill">
+                        <span class="skill-title">{{skill}}</span>
+                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-d-' + i"></span></span>
+                    </div>
+                </div>
+                <div v-if="skillView==='languages'">
+                    <div v-for="(skill, i) in skills['languages']" :key="skill">
+                        <span class="skill-title">{{skill}}</span>
+                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-l-' + i"></span></span>
+                    </div>
+                </div>
+                <div v-if="skillView==='frameworks/libraries'">
+                    <div v-for="(skill, i) in skills['frameworks/libraries']" :key="skill">
+                        <span class="skill-title">{{skill}}</span>
+                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-fl-' + i"></span></span>
+                    </div>
+                </div>
+                <div v-if="skillView==='management'">
+                    <div v-for="(skill, i) in skills['management']" :key="skill">
+                        <span class="skill-title">{{skill}}</span>
+                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-m-' + i"></span></span>
+                    </div>
+                </div>  
             </div>
         <div class="spacer">
         </div>
@@ -56,7 +56,40 @@ export default {
     name: 'skills',
     data: () => {
         return {
-            skillView: 'none'
+            skillView: 'none',
+            skillCategories: [
+                'front-end', 
+                'back-end', 
+                'databases', 
+                'languages', 
+                'frameworks/libraries', 
+                'management'
+                ],
+            skills: {
+                'front-end': [
+                    'HTML',
+                    'CSS',
+                    'JavaScript'
+                ],
+                'back-end': [
+                    'JavaScript',
+                    'C#',
+                    'Python'
+                ],
+                'databases': [
+                    'SQL / Postgres',
+                    'MongoDB'
+                ],
+                'languages': [
+                    'JavaScript',
+                    'C#',
+                    'Python',
+                    'R',
+                    'PHP'
+                ],
+                'frameworks/libraries': [],
+                'management': []
+            }
         }
     },
     methods: {
@@ -113,7 +146,7 @@ export default {
     text-align: center;
 }
 
-#p-f-1 {
+#p-f-0 {
     float: left;
     height: 10px;
     background-color: rgb(13, 4, 114);
