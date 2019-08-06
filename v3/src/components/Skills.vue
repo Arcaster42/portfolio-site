@@ -3,17 +3,21 @@
         <div class="spacer">
         </div>
             <div class="skill-div">
-                <div v-if="skillView==='none'">
-                    <button v-for="(button, key) in buttons" :key="key" class="btn" v-on:click="changeView(key)">
-                        {{button}}
-                    </button>
-                </div>
-                <div v-if="skillView!=='none'">
-                    <div v-for="(skill, i) in skills[skillView]" :key="skill">
-                        <span class="skill-title">{{skill}}</span>
-                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-' + skill"></span></span>
+                <transition name="fade" mode="out-in">
+                    <div v-if="skillView==='none'">
+                        <button v-for="(button, key) in buttons" :key="key" class="btn" v-on:click="changeView(key)">
+                            {{button}}
+                        </button>
                     </div>
-                </div>  
+                </transition>
+                    <transition name="fade" mode="out-in">
+                        <div v-if="skillView!=='none'">
+                            <div v-for="(skill, i) in skills[skillView]" :key="skill">
+                                <span class="skill-title">{{skill}}</span>
+                                <span v-bind:id="skill" class="skill"><span v-bind:id="'p-' + skill"></span></span>
+                            </div>
+                        </div>
+                    </transition>
             </div>
         <div class="spacer">
         </div>
@@ -241,15 +245,11 @@ export default {
     border-radius: 25px;
 }
 
-.slide-fade-enter-active {
-  transition: all .3s ease;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.35s ease-out;
 }
-.slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-}
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
-  transform: translateX(10px);
+
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 </style>
