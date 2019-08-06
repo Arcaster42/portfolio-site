@@ -1,6 +1,10 @@
 <template>
     <div class="navbar">
-        <span class="link" v-on:click="navigate">Change View</span>
+        <span class="link" v-on:click="navigate('landing')">Home</span>
+        <span class="link" v-on:click="navigate('skills')">Skills</span>
+        <span class="link" v-on:click="navigate('projects')">Projects</span>
+        <span class="link" v-on:click="navigate('characteristics')">Characteristics</span>
+        <span class="link" v-on:click="navigate('profile')">GitHub / LinkedIn / Resume</span>
     </div>
 </template>
 
@@ -8,8 +12,8 @@
 export default {
     name: 'navigation',
     methods: {
-        navigate: function() {
-            this.$emit('changeView', 'skills')
+        navigate: function(destination) {
+            this.$emit('changeView', destination)
         }
     }    
 }
@@ -23,7 +27,7 @@ export default {
     overflow: hidden;
     top: 0;
     width: 100%;
-    z-index: 10;
+    z-index: 1;
 }
 
 .link {
@@ -36,5 +40,6 @@ export default {
     font-size: 20px;
     font-weight: bolder;
     font-family: 'Courier New', Courier, monospace;
+    cursor: pointer;
 }
 </style>
