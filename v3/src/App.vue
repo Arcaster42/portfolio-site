@@ -1,9 +1,10 @@
 <template>
   <div>
-    <Navigation v-on:changeView='changeView' />
+    <Navigation v-on:changeView='changeView'/>
     <transition name="fade" mode="out-in">
-      <Landing v-if="this.view==='landing'"/>
-      <Skills v-if="this.view==='skills'"/>
+      <Landing v-if="view==='landing'"/>
+      <Skills v-if="view==='skills'"/>
+      <Projects v-if="view==='projects'"/>
     </transition>
   </div>
 </template>
@@ -12,13 +13,15 @@
 import Navigation from './components/Navigation.vue'
 import Landing from './components/Landing.vue'
 import Skills from './components/Skills.vue'
+import Projects from './components/Projects'
 
 export default {
   name: 'app',
   components: {
     Navigation,
     Landing,
-    Skills
+    Skills,
+    Projects
   },
   data: () => {
     return {
