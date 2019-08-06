@@ -3,12 +3,11 @@
         <div class="spacer">
         </div>
             <div class="skill-div">
-                <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('front-end')">Front-End</button>
-                <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('back-end')">Back-End</button>
-                <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('databases')">Databases</button>
-                <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('languages')">Languages</button>
-                <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('frameworks/libraries')">Frameworks / Libraries</button>
-                <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('management')">Management</button>
+                <div v-if="skillView==='none'">
+                    <button v-for="(button, key) in buttons" :key="key" class="btn" v-on:click="changeView(key)">
+                        {{button}}
+                    </button>
+                </div>
                 <div v-if="skillView!=='none'">
                     <div v-for="(skill, i) in skills[skillView]" :key="skill">
                         <span class="skill-title">{{skill}}</span>
@@ -59,6 +58,14 @@ export default {
                 ],
                 'frameworks/libraries': [],
                 'management': []
+            },
+            buttons: {
+                'front-end': 'Front-End',
+                'back-end': 'Back-End',
+                'databases': 'Databases',
+                'languages': 'Languages',
+                'frameworks/libraries': 'Frameworks/Libraries',
+                'management': 'Management'
             }
         }
     },
