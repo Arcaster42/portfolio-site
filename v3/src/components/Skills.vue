@@ -4,7 +4,7 @@
         </div>
             <div class="skill-div">
                 <transition name="fade" mode="out-in">
-                    <div v-if="skillView==='none'">
+                    <div v-if="skillView!=='nones'">
                         <button v-for="(button, key) in buttons" :key="key" class="btn" v-on:click="changeView(key)">
                             {{button}}
                         </button>
@@ -14,7 +14,11 @@
                         <div v-if="skillView!=='none'">
                             <div v-for="(skill, i) in skills[skillView]" :key="skill">
                                 <span class="skill-title">{{skill}}</span>
-                                <span v-bind:id="skill" class="skill"><span v-bind:id="'p-' + skill"></span></span>
+                                <span v-bind:id="skill" class="skill">
+                                    <transition name="fade" mode="out-in">
+                                        <span v-bind:id="'p-' + skill"></span>
+                                    </transition>
+                                </span>
                             </div>
                         </div>
                     </transition>
