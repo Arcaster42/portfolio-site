@@ -42,4 +42,8 @@ export default {
     font-family: 'Courier New', Courier, monospace;
     cursor: pointer;
 }
+
+.link:hover {
+    color: crimson;
+}
 </style>
