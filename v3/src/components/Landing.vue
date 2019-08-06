@@ -1,6 +1,6 @@
 <template>
     <div class="landing-div">
-        <img class="landing-img" src="../assets/in_landing.jpg">
+        <img class="landing-img" src="../assets/bg-masthead.jpg">
     </div>
 </template>
 
