@@ -9,40 +9,10 @@
                 <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('languages')">Languages</button>
                 <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('frameworks/libraries')">Frameworks / Libraries</button>
                 <button class="btn" v-if="this.skillView==='none'" v-on:click="changeView('management')">Management</button>
-                <div v-if="skillView==='front-end'">
-                    <div v-for="(skill, i) in skills['front-end']" :key="skill">
+                <div v-if="skillView!=='none'">
+                    <div v-for="(skill, i) in skills[skillView]" :key="skill">
                         <span class="skill-title">{{skill}}</span>
-                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-f-' + i"></span></span>
-                    </div>
-                </div>
-                <div v-if="skillView==='back-end'">
-                    <div v-for="(skill, i) in skills['back-end']" :key="skill">
-                        <span class="skill-title">{{skill}}</span>
-                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-b-' + i"></span></span>
-                    </div>
-                </div>
-                <div v-if="skillView==='databases'">
-                    <div v-for="(skill, i) in skills['databases']" :key="skill">
-                        <span class="skill-title">{{skill}}</span>
-                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-d-' + i"></span></span>
-                    </div>
-                </div>
-                <div v-if="skillView==='languages'">
-                    <div v-for="(skill, i) in skills['languages']" :key="skill">
-                        <span class="skill-title">{{skill}}</span>
-                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-l-' + i"></span></span>
-                    </div>
-                </div>
-                <div v-if="skillView==='frameworks/libraries'">
-                    <div v-for="(skill, i) in skills['frameworks/libraries']" :key="skill">
-                        <span class="skill-title">{{skill}}</span>
-                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-fl-' + i"></span></span>
-                    </div>
-                </div>
-                <div v-if="skillView==='management'">
-                    <div v-for="(skill, i) in skills['management']" :key="skill">
-                        <span class="skill-title">{{skill}}</span>
-                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-m-' + i"></span></span>
+                        <span v-bind:id="skill" class="skill"><span v-bind:id="'p-' + skill + '-' + i"></span></span>
                     </div>
                 </div>  
             </div>
