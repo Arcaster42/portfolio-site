@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'landing'    
+    name: 'landing'  
 }
 </script>
 
@@ -16,9 +16,8 @@ export default {
 }
 
 .landing-img {
-    height: 105%;
-    width: 105%;
-    position: absolute;
-    margin: -10px;
+    height: 100%;
+    width: 100%;
+    position: relative;
 }
 </style>
