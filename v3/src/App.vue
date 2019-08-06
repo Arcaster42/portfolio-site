@@ -2,18 +2,21 @@
   <div>
     <Navigation v-on:changeView='changeView' />
     <Landing v-if="this.view==='landing'"/>
+    <Skills v-if="this.view==='skills'"/>
   </div>
 </template>
 
 <script>
 import Navigation from './components/Navigation.vue'
 import Landing from './components/Landing.vue'
+import Skills from './components/Skills.vue'
 
 export default {
   name: 'app',
   components: {
     Navigation,
-    Landing
+    Landing,
+    Skills
   },
   data: () => {
     return {
