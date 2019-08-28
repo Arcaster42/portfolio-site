@@ -1,31 +1,29 @@
 <template>
-    <div>
-        <div class="spacer">
-        </div>
-            <div class="skill-div">
+    <b-container>
+            <b-row class="skill-div">
                 <transition name="fade" mode="out-in">
-                    <div v-if="skillView!=='nones'">
-                        <button v-for="(button, key) in buttons" :key="key" class="btn" v-on:click="changeView(key)">
+                    <b-col v-if="skillView!=='nones'">
+                        <b-button variant="outline-primary" v-for="(button, key) in buttons" :key="key" v-on:click="changeView(key)">
                             {{button}}
-                        </button>
-                    </div>
+                        </b-button>
+                    </b-col>
                 </transition>
-                    <transition name="fade" mode="out-in">
-                        <div v-if="skillView!=='none'">
-                            <div v-for="(skill, i) in skills[skillView]" :key="skill">
-                                <span class="skill-title">{{skill}}</span>
-                                <span v-bind:id="skill" class="skill">
-                                    <transition name="fade" mode="out-in">
-                                        <span v-bind:id="'p-' + skill"></span>
-                                    </transition>
-                                </span>
-                            </div>
+            </b-row>
+            <b-row>
+                <transition name="fade" mode="out-in">
+                    <b-col v-if="skillView!=='none'">
+                        <div v-for="(skill) in skills[skillView]" :key="skill.name">
+                            <h5>{{skill.name}}</h5>
+                            <b-progress show-progress class="mb-3">
+                                <b-progress-bar v-for="bar in skill.bars" :key="bar.text" :value="bar.value" :variant="bar.variant" v-b-tooltip.hover :title="bar.hover">{{bar.text}}</b-progress-bar>
+                            </b-progress> 
                         </div>
-                    </transition>
-            </div>
+                    </b-col>
+                </transition>
+            </b-row>
         <div class="spacer">
         </div>
-    </div>
+    </b-container>
 </template>
 
 <script>
@@ -44,32 +42,93 @@ export default {
                 ],
             skills: {
                 'front-end': [
-                    'HTML',
-                    'CSS',
-                    'JavaScript'
+                    { name: 'HTML', bars: [{ value: 40, text: 'Syntax', variant: 'info' }, { value: 40, text: 'Best Practices', variant: 'success' }] },
+                    { name: 'CSS', bars: [{ value: 30, text: 'Syntax', variant: 'info' }, { value: 30, text: 'Common Styling', variant: 'primary'}, { value: 20, text: 'Animation & Advanced Styling', variant: 'success' }] },
+                    { name: 'JavaScript', bars: [{ value: 30, text: 'Syntax & Functions', variant: 'info' }, { value: 30, text: 'DOM Manipulation', variant: 'primary' }, { value: 30, text: 'Best Practices', variant: 'success' }] }
                 ],
                 'back-end': [
-                    'JavaScript',
-                    'C#',
-                    'Python'
+                    { name: 'JavaScript', bars: [{ value: 30, text: 'Node/Express Fundamentals', variant: 'info' }, { value: 20, text: 'REST APIs', variant: 'primary' }, { value: 15, text: 'SQL Database', variant: 'info' }, { value: 15, text: 'NoSQL Database', variant: 'primary' }, { value: 15, text: 'Best Practices', variant: 'success' }] },
+                    { name: 'C#', bars: [{ value: 30, text: 'Syntax & Fundamentals', variant: 'info' }, { value: 20, text: 'REST APIs', variant: 'primary' }] },
+                    { name: 'Python', bars: [{ value: 20, text: 'Syntax & Fundamentals', variant: 'info' }, { value: 15, text: 'REST APIs', variant: 'primary' }] }
                 ],
                 'databases': [
-                    'SQL/Postgres',
-                    'MongoDB'
+                    { name: 'SQL/Postgres', bars: [
+                        { value: 25, text: 'Setup & Integration', variant: 'info', hover: 'Creation, migration, seeding, back-end libraries' }, 
+                        { value: 15, text: 'Schema Design', variant: 'primary', hover: 'Relationships, normalization, naming patterns' }, 
+                        { value: 20, text: 'Basic Queries', variant: 'info', hover: 'SQL syntax and keywords, knex syntax and functions' }, 
+                        { value: 10, text: 'Advanced Queries', variant: 'primary', hover: 'Joins, multiple conditions, filters, and time values' }, 
+                        { value: 10, text: 'Transactions', variant: 'info' }
+                        ] 
+                    },
+                    { name: 'MongoDB', bars: [
+                        { value: 25, text: 'Setup & Integration', variant: 'info', hover: 'Creation, migration, seeding, back-end libraries' }, 
+                        { value: 15, text: 'Schema Design', variant: 'primary', hover: 'Object design, nesting patterns, naming patterns' }, 
+                        { value: 30, text: 'Queries', variant: 'info', hover: 'Library-based queries' }
+                        ]
+                    }
                 ],
                 'languages': [
-                    'JavaScript',
-                    'C#',
-                    'Python',
-                    'R',
-                    'PHP'
+                    { name: 'JavaScript', bars: [
+                        { value: 20, text: 'Fundamentals', variant: 'info', hover: 'Syntax, functions, operators, etc.' }, 
+                        { value: 20, text: 'Advanced Concepts', variant: 'primary', hover: 'Hoisting, currying, higher-order functions, language-specific intracies, etc.' }, 
+                        { value: 15, text: 'Algorithms', variant: 'info', hover: 'Using language-specific strengths in design' }, 
+                        { value: 20, text: 'Full-Stack', variant: 'primary', hover: 'Front-end, Express back-end, and database access' }, 
+                        { value: 15, text: 'Best Practices', variant: 'success', hover: 'Application of industry standards' }
+                        ]
+                    },
+                    { name: 'C#', bars: [
+                        { value: 20, text: 'Fundamentals', variant: 'info', hover: 'Syntax, functions, operators, etc.' }, 
+                        { value: 15, text: 'Advanced Concepts', variant: 'primary', hover: 'Abstract classes, interfaces, threads, etc.' }, 
+                        { value: 15, text: 'Algorithms', variant: 'info', hover: 'Using language-specific strengths in design' }, 
+                        { value: 15, text: 'Full-Stack', variant: 'primary', hover: '.NET back-end and database access' }, 
+                        { value: 10, text: 'Best Practices', variant: 'success', hover: 'Application of industry standards' }
+                        ] 
+                    },
+                    { name: 'R', bars: [
+                        { value: 15, text: 'Fundamentals', variant: 'info', hover: 'Syntax, file and data manipulation, etc.' }, 
+                        { value: 10, text: 'Advanced Concepts', variant: 'primary', hover: 'Package use, data manipulation, common analyses' }, 
+                        { value: 15, text: 'Data Analysis', variant: 'info', hover: 'Regression, confidence intervals, interpretation, etc.' }, 
+                        { value: 10, text: 'Visualization', variant: 'primary', hover: 'Plot packages, common plots, geography-themed plots, themed plots' }, 
+                        { value: 15, text: 'Machine Learning', variant: 'success', hover: 'Algorithm selection, set training' }
+                        ] 
+                    },
+                    { name: 'PHP', bars: [
+                        { value: 15, text: 'Fundamentals', variant: 'info', hover: 'Syntax, functions, operators, etc.' }, 
+                        { value: 10, text: 'Advanced Concepts', variant: 'primary' }, 
+                        { value: 15, text: 'Scaling', variant: 'info' }, 
+                        { value: 15, text: 'Full-Stack', variant: 'primary', hover: 'Back-end and database access' }
+                        ] 
+                    },
+                    { name: 'Python', bars: [
+                        { value: 10, text: 'Fundamentals', variant: 'info', hover: 'Syntax, functions, operators, etc.' }, 
+                        { value: 10, text: 'Advanced Concepts', variant: 'primary', hover: 'Array manipulation, math, error handling' }, 
+                        { value: 10, text: 'Algorithms', variant: 'info', hover: 'Using language-specific strengths in design' }, 
+                        { value: 10, text: 'Full-Stack', variant: 'primary', hover: 'Flask back-end API and database access' }, 
+                        { value: 10, text: 'Machine Learning', variant: 'info', hover: 'Pandas and NumPy for summary statistics, plotting, set training' }
+                        ] 
+                    }
                 ],
                 'frameworks/libraries': [
-                    'Node/Express',
-                    'Vue/Vuex',
-                    'React/Redux',
-                    'Pug',
-                    'Mongoose'
+                    { name: 'Node/Express', bars: [
+                        { value: 10, text: 'Tutorial', variant: 'info', hover: 'Setup and fundamentals' },
+                        { value: 60, text: '10+ Projects Completed', variant: 'primary', hover: 'Experience with over 10 projects' },
+                        { value: 20, text: 'Best Practices', variant: 'success', hover: 'Import/export, file structures, use of constants, proxying' }
+                    ] },
+                    { name: 'Vue/Vuex', bars: [
+                        { value: 15, text: 'Tutorial', variant: 'info', hover: 'Setup and fundamentals' },
+                        { value: 55, text: '5+ Projects Completed', variant: 'primary', hover: 'Experience with over 5 projects' },
+                        { value: 15, text: 'Best Practices', variant: 'success', hover: 'Clean templates, component design, v-directives, actions calling mutations' }
+                    ] },
+                    { name: 'React/Redux', bars: [
+                        { value: 15, text: 'Tutorial', variant: 'info', hover: 'Setup and fundamentals' },
+                        { value: 30, text: '2 Projects Completed', variant: 'primary', hover: 'Experience with two projects' },
+                        { value: 10, text: 'Best Practices', variant: 'success', hover: 'Readable renders, component design, Redux mapping, state immutability' }
+                    ] },
+                    { name: 'Pug', bars: [
+                        { value: 10, text: 'Tutorial', variant: 'info', hover: 'Setup and fundamentals' },
+                        { value: 70, text: '5+ Projects Completed', variant: 'primary', hover: 'Experience with over 5 projects' },
+                        { value: 10, text: 'Best Practices', variant: 'success', hover: 'Readable structure, conditionals, interpolation, imports' }
+                    ] },
                 ],
                 'management': []
             },
@@ -99,26 +158,11 @@ export default {
     min-height: 100px;
     width: 100%;
     background-color: darkblue;
-    color: ghostwhite;
 }
 
 .skill-div {
     text-align: center;
     margin-top: 20px;
-}
-
-.btn {
-    margin-top: 25px;
-    height: 50px;
-    width: 180px;
-    border: none;
-    background-color: navy;
-    color: white;
-    font-size: 16px;
-}
-
-.btn:hover {
-    background-color: rgb(77, 77, 185);
 }
 
 .skill {
@@ -135,14 +179,6 @@ export default {
     color: black;
     display: block;
     text-align: center;
-}
-
-#p-HTML {
-    float: left;
-    height: 10px;
-    background-color: rgb(13, 4, 114);
-    width: 85%;
-    border-radius: 25px;
 }
 
 #p-CSS {
