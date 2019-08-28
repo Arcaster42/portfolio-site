@@ -2,9 +2,9 @@
   <div>
     <Navigation v-on:changeView='changeView'/>
     <transition name="fade" mode="out-in">
-      <Landing v-if="view==='landing'"/>
-      <Skills v-if="view==='skills'"/>
-      <Projects v-if="view==='projects'"/>
+      <Landing v-if="getView==='Landing'"/>
+      <Skills v-if="getView==='Skills'"/>
+      <Projects v-if="getView==='Projects'"/>
     </transition>
   </div>
 </template>
@@ -25,29 +25,30 @@ export default {
   },
   data: () => {
     return {
-      view: 'landing'
+      
+    }
+  },
+  computed: {
+    getView () {
+      return this.$store.state.view
     }
   },
   methods: {
-    changeView: function(view) {
-      this.view = view
-    }
+    
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+html {
+  position: relative;
+  min-height: 100%;
 }
 
 body {
-  margin: 0px;
+  margin-bottom: 0px !important; /* Height of the footer */
+  padding: 0;
+  padding-top: 60px;
 }
 
 .fade-enter-active, .fade-leave-active {
