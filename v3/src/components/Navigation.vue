@@ -1,10 +1,14 @@
 <template>
-    <div class="navbar">
-        <span class="link" v-on:click="navigate('landing')">Home</span>
-        <span class="link" v-on:click="navigate('skills')">Skills</span>
-        <span class="link" v-on:click="navigate('projects')">Projects</span>
-        <span class="link" v-on:click="navigate('characteristics')">Characteristics</span>
-        <span class="link" v-on:click="navigate('profile')">GitHub / LinkedIn / Resume</span>
+    <div>
+        <b-navbar toggleable="lg" type="dark" variant="primary">
+            <b-navbar-nav>
+                <b-nav-item v-on:click="navigate('Landing')">Home</b-nav-item>
+                <b-nav-item v-on:click="navigate('Skills')">Skills</b-nav-item>
+                <b-nav-item v-on:click="navigate('Projects')">Projects</b-nav-item>
+                <b-nav-item v-on:click="navigate('Characteristics')">Characteristics</b-nav-item>
+                <b-nav-item v-on:click="navigate('Profile')">GitHub / LinkedIn / Resume</b-nav-item>
+            </b-navbar-nav>
+        </b-navbar>
     </div>
 </template>
 
@@ -12,8 +16,8 @@
 export default {
     name: 'navigation',
     methods: {
-        navigate: function(destination) {
-            this.$emit('changeView', destination)
+        navigate (view) {
+            this.$store.commit('setView', view)
         }
     }    
 }
